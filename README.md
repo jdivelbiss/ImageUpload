@@ -11,9 +11,9 @@ Coding project demonstrating how a user would upload an image as an attachment. 
 ## Dependencies
 - Bower Package Dependencies
   - [bootstrap v3.3.7](http://getbootstrap.com/getting-started/#download)
-  - [jquery 3.2.1](https://jquery.org/)
-  - [jquery-ui](http://jqueryui.com)
-  - [jquery-validation](https://jqueryvalidation.org)
+  - [jquery v3.2.1](https://jquery.org/)
+  - [jquery-ui v1.12.1](http://jqueryui.com)
+  - [jquery-validation v1.14.0](https://jqueryvalidation.org)
 
 ## Schema
 Albums
