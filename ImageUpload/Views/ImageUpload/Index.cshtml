@@ -1,0 +1,196 @@
+﻿@using ImageUpload.Models
+<div class="container">
+    <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-4">
+
+            <!-- Albums Panel -->
+            <div id="album_panel" class="panel panel-default ">
+
+                <!-- Albums Panel Header -->
+                <div class="panel-heading">
+                    <div class="btn-group pull-right"><i class="collapsable glyphicon glyphicon-collapse-up"></i></div>
+                    <span class="panel-heading-title">Albums</span>
+                </div>
+                <!-- /Albums Panel Header -->
+                <!-- Albums Panel Body Content -->
+                <div class="panel-body">
+
+                    <!-- Error Location -->
+                    <div id="album_error" class="alert alert-danger" style="display:none">
+                        <i class="dismiss-alert glyphicon glyphicon-remove pull-right"></i>
+                        <span></span>
+                    </div>
+                    <!-- /Error Location -->
+                    <!-- Album List -->
+                    <ul id="album_list" class="nav nav-list">
+                        @foreach (var item in ViewData["AlbumList"] as List<Album>)
+                        {
+                            <li class="nav-item clearfix" album_id="@item.ID">
+                                <div class="pull-left">
+                                    <a class="nav-link" data-toggle="@item.Description" href="/ImageUpload/Index/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                                </div>
+                                @if (!item.Default)
+                                {
+                                    <div class="pull-right">
+                                        <i class="album_control glyphicon glyphicon-cog"></i>
+                                        <i class="album_control glyphicon glyphicon-trash"></i>
+                                    </div>
+                                }
+                            </li>
+                        }
+                    </ul>
+                    <!-- /Album List -->
+                    <!-- Album Create/Update Form -->
+                    <div id="album_info" style="display:none">
+                        <form id="album_form" name="album_form" onsubmit="return false;">
+                            <input type="text" class="form-control hidden" id="album_id" name="album_id" value="">
+                            <div class="form-group">
+                                <label for="album_name">Name:</label>
+                                <input type="text" class="form-control" id="album_name" name="album_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="album_description">Description:</label>
+                                <textarea class="form-control" rows="3" id="album_description" name="album_description"></textarea>
+                            </div>
+
+                            <div class="form-controls form-group">
+                                <button id="submit_album" name="submit_album" class="btn btn-info">Create</button>
+                                <button id="cancel_album" name="cancel_album" class="btn btn-info">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /Album Create/Update Form -->
+                </div>
+                <!-- /Albums Panel Body Content -->
+                <!-- /Albums Panel Footer -->
+                <div class="panel-footer">
+                    <div class="pull-right"><i class="album_control glyphicon glyphicon-plus-sign"></i></div>
+                </div>
+                <!-- /Albums Panel Footer -->
+
+            </div>
+            <!-- /Albums Panel -->
+            <!-- Image Panel -->
+            <div class="panel panel-default">
+
+                <!-- Image Panel Heading -->
+                <div class="panel-heading">
+                    <div class="btn-group pull-right"><i class="collapsable glyphicon glyphicon-collapse-up"></i></div>
+                    <span class="panel-heading-title">Upload Images</span>
+                </div>
+                <!-- /Image Panel Heading -->
+                <!-- Image Panel Content Body -->
+                <div class="panel-body">
+                    <!-- Browse Input Controls -->
+                    <div id="browse-file" class="input-group image-preview">
+                        <input placeholder="" id="image-file-name" type="text" class="form-control" disabled="disabled">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default image-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+
+                            <div class="btn btn-default image-preview-input">
+                                <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+                                <input type="file" name="upload-file[]" id="upload-file" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Browse Input Controls -->
+                    <!-- Drag/Drop Input Controls -->
+                    <div id="drop-zone" class="upload-drop-zone">
+                        Or drag and drop files here
+                    </div>
+                    <!-- /Drag/Drop Input Controls -->
+                    <!-- Upload Image Webform -->
+                    <div id="meta_data" style="display:none">
+                        <form id="image_upload_form" name="image_upload_form" onsubmit="return false;">
+                            <input type="text" class="form-control hidden" id="meta_image_id" name="meta_image_id" value="">
+                            <div class="img-preview">
+                                <img id="preview_image" class="img-thumbnail" src="#" alt="Image Preview" />
+                            </div>
+                            <div class="form-group">
+                                <label for="meta_album" name="meta_album">Album:</label>
+                                <select class="form-control" id="meta_album">
+                                    @foreach (var item in ViewData["AlbumList"] as List<Album>)
+                                    {
+                                        <option value="@item.ID" @(item.Default == true ? " selected='selected'" : "")>@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="meta_file_name">Name:</label>
+                                <input type="text" class="form-control" id="meta_file_name" name="meta_file_name">
+                            </div>
+                            <div class="form-group">
+                                <label for="meta_file_description">Description:</label>
+                                <textarea class="form-control" rows="5" id="meta_file_description" name="meta_file_description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="meta_file_tags">Tags:</label>
+                                <textarea class="form-control" rows="2" id="meta_file_tags" name="meta_file_tags"></textarea>
+                            </div>
+
+                            <div class="progress" style="display:none">
+                                <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
+                            </div>
+
+                            <div class="form-controls form-group">
+                                <button id="submit_upload" name="submit_upload" class="btn btn-info">Upload</button>
+                                <button id="cancel_upload" name="cancel_upload" class="btn btn-info">Cancel</button>
+
+                                <button id="finish_upload" name="finish_upload" class="btn btn-info" style="display:none">Finish</button>
+                            </div>
+
+                        </form>
+                    </div>
+                    <!-- Upload Image Webform -->
+                    <!-- Error Location -->
+                    <div id="image_error" class="alert alert-danger" style="display:none">
+                        <i class="dismiss-alert glyphicon glyphicon-remove pull-right"></i>
+                        <span></span>
+                    </div>
+                    <!-- /Error Location -->
+                </div>
+                <!-- Image Panel Content Body -->
+
+            </div>
+            <!-- /Image Panel -->
+        </div>
+        <!-- /Left Column -->
+
+        <div class="col-md-8">
+            <!-- Image List Panel -->
+            <div id="gallery_panel" class="panel panel-default">
+
+                <div class="panel-heading">
+                    <div class="btn-group pull-right"><i class="collapsable glyphicon glyphicon-collapse-up"></i></div>
+                    @{
+                        var album_name = ((Album)ViewData["CurrentAlbum"]).Name;
+                    }
+                    <div>Images by Album - @album_name</div>
+                </div>
+
+                <div class="panel-body">                   
+                    <!-- Error Location -->
+                    <div id="gallery_error" class="alert alert-danger" style="display:none">
+                        <i class="dismiss-alert glyphicon glyphicon-remove pull-right"></i>
+                        <span></span>
+                    </div>
+                    <!-- /Error Location -->
+                    <div class="gallery">
+                        @foreach (var image in ViewData["ImageList"] as List<ImageUpload.Models.ImageAsset>)
+                        {
+                            <div class="gallery_image">
+                                <figure image_id="@image.ID">
+                                    <img src="@image.Location" alt="@image.Description">
+                                    <figcaption>@image.Name</figcaption>
+                                </figure>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Image List Panel -->
+        </div>
+    </div>
+</div>

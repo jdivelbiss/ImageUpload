@@ -1,0 +1,132 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.upload-drop-zone {
+    height: 200px;
+    border-width: 2px;
+    margin-bottom: 20px;
+}
+
+.upload-drop-zone {
+    color: #ccc;
+    border-style: dashed;
+    border-color: #ccc;
+    line-height: 200px;
+    text-align: center
+}
+
+    .upload-drop-zone.drop {
+        color: #222;
+        border-color: #222;
+    }
+
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+    .image-preview-input input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+
+.image-preview-input-title {
+    margin-left: 5px;
+}
+
+.input-group-btn {
+    padding-left: 1px;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-controls {
+    text-align: right;
+}
+
+#preview_image {
+    max-width: 100px;
+}
+
+.img-preview {
+    text-align: center;
+}
+
+.collapsable {
+    cursor: pointer;
+}
+
+.panel-footer > div {
+    margin-top: -8px;
+}
+
+.album_control {
+    cursor: pointer;
+}
+
+form .error {
+    color: #ff0000;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+.gallery_image {
+    padding: 10px;
+    width: calc(25% - 4px);
+    text-align: center;
+}
+
+    .gallery_image img {
+        max-width: 100px;
+    }
+
+    .gallery_image.edit {
+        padding: 9px;
+        border: dashed 1px #000000;
+    }
+
+#delete_image_btn {
+    position: absolute;
+    margin-top: -25px;
+    margin-left: -10px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+
+    .gallery_image {
+        padding: 2px;
+        width: calc(50% - 4px);
+        text-align: center;
+    }
+}

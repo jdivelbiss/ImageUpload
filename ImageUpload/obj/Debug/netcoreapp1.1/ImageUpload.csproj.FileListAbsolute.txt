@@ -1,0 +1,8 @@
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\bin\Debug\netcoreapp1.1\ImageUpload.deps.json
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\bin\Debug\netcoreapp1.1\ImageUpload.runtimeconfig.json
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\bin\Debug\netcoreapp1.1\ImageUpload.runtimeconfig.dev.json
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\bin\Debug\netcoreapp1.1\ImageUpload.dll
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\bin\Debug\netcoreapp1.1\ImageUpload.pdb
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\obj\Debug\netcoreapp1.1\ImageUpload.AssemblyInfo.cs
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\obj\Debug\netcoreapp1.1\ImageUpload.dll
+C:\Users\jdivelbiss\Documents\src\ImageUpload\ImageUpload\obj\Debug\netcoreapp1.1\ImageUpload.pdb
